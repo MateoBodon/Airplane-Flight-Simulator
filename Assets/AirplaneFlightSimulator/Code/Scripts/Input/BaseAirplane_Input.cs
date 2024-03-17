@@ -51,12 +51,12 @@ public class BaseAirplane_Input : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(brake);
+        HandleInput();
     }
     #endregion
 
     #region Custom Methods
-        void HandleInput()
+        protected virtual void HandleInput()
         {
             //Process Main Control Input
             pitch = Input.GetAxis("Vertical");
