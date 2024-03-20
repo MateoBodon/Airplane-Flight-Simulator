@@ -6,6 +6,9 @@ using UnityEngine;
 public class BaseAirplane_Input : MonoBehaviour
 {
     #region Variables
+    public float throttleSpeed = 0.1f;
+
+    protected float stickyThrottle;
     protected float pitch = 0f;
     protected float roll = 0f;
     protected float yaw = 0f;
@@ -18,6 +21,10 @@ public class BaseAirplane_Input : MonoBehaviour
     #endregion
 
     #region Properties
+    public float StickyThrottle
+    {
+        get{return stickyThrottle;}
+    }
     public float Pitch
     {
         get{return pitch;}
@@ -45,9 +52,6 @@ public class BaseAirplane_Input : MonoBehaviour
     #endregion
 
     #region Builtin Methods
-    // Start is called before the first frame update
-    void Start(){}
-
     // Update is called once per frame
     void Update()
     {
@@ -63,6 +67,7 @@ public class BaseAirplane_Input : MonoBehaviour
             roll = Input.GetAxis("Horizontal");
             yaw = Input.GetAxis("Yaw");
             throttle = Input.GetAxis("Throttle");
+            StickyThrottleControl();
 
             //Process Brake Inputs
             brake = Input.GetKey(brakeKey)? 1f : 0f;
@@ -78,6 +83,12 @@ public class BaseAirplane_Input : MonoBehaviour
             }
 
             flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
+        }
+
+        void StickyThrottleControl()
+        {
+            stickyThrottle = stickyThrottle + (throttle * throttleSpeed * Time.deltaTime);
+            stickyThrottle = Mathf.Clamp01(stickyThrottle);
         }
     #endregion
 }

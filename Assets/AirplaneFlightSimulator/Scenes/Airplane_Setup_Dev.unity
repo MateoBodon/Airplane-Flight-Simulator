@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 389a2dd36543dc24bbb98619528cccc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForce: 8000
+  maxForce: 5000
   maxRPM: 2550
   powerCurve:
     serializedVersion: 2
@@ -562,8 +562,8 @@ Rigidbody:
   m_GameObject: {fileID: 382502997}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 0.05
+  m_Drag: 0.01
+  m_AngularDrag: 0.01
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9348db5a2ec3fac499927e0a222e1671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throttleSpeed: 0.1
   brakeKey: 32
   maxFlapIncrements: 3
 --- !u!4 &382503001 stripped
@@ -612,6 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 382503000}
+  characteristics: {fileID: 0}
   centerOfGravity: {fileID: 191331837}
   airplaneWeight: 1200
   engines:
@@ -716,6 +718,56 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &382503004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382502997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492dff4422202b240ad21f5df685e206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardSpeed: 0
+  mph: 0
+  maxMPH: 110
+  maxLiftPower: 5800
+  liftCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.22013071
+      value: 0.81515807
+      inSlope: 1.4949709
+      outSlope: 1.4949709
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  dragFactor: 0.01
 --- !u!1 &506416142
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1748,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2670814530406778842, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
       insertIndex: -1
       addedObject: {fileID: 382503002}
+    - targetCorrespondingSourceObject: {fileID: 2670814530406778842, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 382503004}
     - targetCorrespondingSourceObject: {fileID: 2670814530406778842, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
       insertIndex: -1
       addedObject: {fileID: 382502999}

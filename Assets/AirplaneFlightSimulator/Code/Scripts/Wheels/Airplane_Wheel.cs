@@ -19,6 +19,8 @@ public class Airplane_Wheel : MonoBehaviour
     #region Custom Methods
     public void InitWheel()
     {
+        wheelCol = GetComponent<WheelCollider>();
+
         if (wheelCol)
         {
             wheelCol.motorTorque = 0.000000000000000000001f;
