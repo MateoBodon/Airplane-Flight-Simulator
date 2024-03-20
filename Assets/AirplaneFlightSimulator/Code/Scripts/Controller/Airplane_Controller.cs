@@ -42,7 +42,7 @@ public class Airplane_Controller : BaseRigidbody_Controller
             characteristics = GetComponent<Airplane_Characteristics>();
             if(characteristics)
             {
-                characteristics.InitCharacteristics(rb);
+                characteristics.InitCharacteristics(rb, input);
             }
         }
 
