@@ -19,6 +19,9 @@ public class Airplane_Controller : BaseRigidbody_Controller
 
     [Header("Wheels")]
     public List<Airplane_Wheel> wheels = new List<Airplane_Wheel>();
+
+    [Header("Control Surfaces")]
+    public List<Airplane_ControlSurface> controlSurfaces = new List<Airplane_ControlSurface>();
     #endregion
 
     #region Constants
@@ -67,6 +70,7 @@ public class Airplane_Controller : BaseRigidbody_Controller
         {
             HandleEngines();
             HandleCharacteristics();
+            HandleControlSurfaces();
             HandleSteering();
             HandleBrakes();
             HandleAltitude();
@@ -94,6 +98,17 @@ public class Airplane_Controller : BaseRigidbody_Controller
        {
            characteristics.UpdateCharacteristics();
        }
+    }
+
+    void HandleControlSurfaces()
+    {
+        if(controlSurfaces.Count > 0)
+        {
+            foreach(Airplane_ControlSurface controlSurface in controlSurfaces)
+            {
+                controlSurface.HandleControlSurface(input);
+            }
+        }
     }
 
     void HandleSteering()
