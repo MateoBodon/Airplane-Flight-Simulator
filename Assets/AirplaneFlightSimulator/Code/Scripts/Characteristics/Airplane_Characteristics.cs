@@ -18,6 +18,7 @@ public class Airplane_Characteristics : MonoBehaviour
 
     [Header("Drag Properties")]
     public float dragFactor = 0.01f;
+    public float flapDragFactor = 0.005f;
 
     [Header("Control Properties")]
     public float pitchSpeed = 1000f;
@@ -65,6 +66,7 @@ public class Airplane_Characteristics : MonoBehaviour
             CalculateForwardSpeed();
             CalculateLift();
             CalculateDrag();
+
             HandlePitch();
             HandleRoll();
             HandleYaw();
@@ -105,7 +107,11 @@ public class Airplane_Characteristics : MonoBehaviour
         //Speed Drag
         float speedDrag = forwardSpeed * dragFactor;
 
-        float finalDrag = startDrag + speedDrag;
+        //Flap Drag
+        float flapDrag = input.Flaps * flapDragFactor;
+
+        //Add it all together
+        float finalDrag = startDrag + speedDrag + flapDrag;
 
         rb.drag = finalDrag;
         rb.angularDrag = startAngularDrag * forwardSpeed;
