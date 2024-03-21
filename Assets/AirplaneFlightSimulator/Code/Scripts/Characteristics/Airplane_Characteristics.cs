@@ -102,7 +102,9 @@ public class Airplane_Characteristics : MonoBehaviour
 
     void CalculateDrag()
     {
+        //Speed Drag
         float speedDrag = forwardSpeed * dragFactor;
+
         float finalDrag = startDrag + speedDrag;
 
         rb.drag = finalDrag;

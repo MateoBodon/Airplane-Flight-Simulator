@@ -42,7 +42,7 @@ public class Airplane_Engine : MonoBehaviour
 
         //Create Force
         float finalPower = maxForce * finalThrottle;
-        Vector3 finalForce = transform.TransformDirection(transform.forward) * finalPower;
+        Vector3 finalForce = transform.forward * finalPower;
 
         return finalForce;
     }
