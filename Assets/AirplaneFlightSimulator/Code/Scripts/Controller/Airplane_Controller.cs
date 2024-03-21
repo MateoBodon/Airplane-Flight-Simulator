@@ -71,8 +71,7 @@ public class Airplane_Controller : BaseRigidbody_Controller
             HandleEngines();
             HandleCharacteristics();
             HandleControlSurfaces();
-            HandleSteering();
-            HandleBrakes();
+            HandleWheel();
             HandleAltitude();
         }
         
@@ -111,16 +110,17 @@ public class Airplane_Controller : BaseRigidbody_Controller
         }
     }
 
-    void HandleSteering()
+    void HandleWheel()
     {
-
+        if(wheels.Count > 0)
+        {
+            foreach(Airplane_Wheel wheel in wheels)
+            {
+                wheel.HandleWheel(input);
+            }
+        }
     }
-
-    void HandleBrakes()
-    {
-
-    }
-
+    
     void HandleAltitude()
     {
 

@@ -947,19 +947,19 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.11
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 40000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_Mass: 1
+  m_WheelDampingRate: 1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0.75
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -987,6 +987,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae90f24a46b49f4d850366e93e16b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelGraphic: {fileID: 596462329}
+  isBraking: 0
+  brakePower: 5
+  isStrering: 1
+  steeringAngle: 20
+  streeingSmoothSpeed: 2
 --- !u!4 &582355653 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6538931692997403962, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
@@ -1021,6 +1027,11 @@ MonoBehaviour:
   blurredPropMat: {fileID: 2100000, guid: 7fa08132d2c2a124eb81cf781ff71e6d, type: 2}
   blurLevel1: {fileID: 2800000, guid: 6f28ec0e9ec29b24889d3cc0566744c4, type: 3}
   blurLevel2: {fileID: 2800000, guid: 95bc0c14930d4984bac744d25196a55e, type: 3}
+--- !u!4 &596462329 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6538931692997403954, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+  m_PrefabInstance: {fileID: 8415816688435803975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &631439059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,6 +1218,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037340874}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1135343074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6538931692997403942, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+  m_PrefabInstance: {fileID: 8415816688435803975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1254155842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1349,19 +1365,19 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.32
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 40000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_Mass: 1
+  m_WheelDampingRate: 1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0.75
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -1389,6 +1405,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae90f24a46b49f4d850366e93e16b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelGraphic: {fileID: 1135343074}
+  isBraking: 1
+  brakePower: 50
+  isStrering: 0
+  steeringAngle: 20
+  streeingSmoothSpeed: 2
 --- !u!1 &1394928618
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,19 +1508,19 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 0.32
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 40000
+    damper: 2000
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
-  m_WheelDampingRate: 0.25
+  m_Mass: 1
+  m_WheelDampingRate: 1
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0.75
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -1526,6 +1548,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae90f24a46b49f4d850366e93e16b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wheelGraphic: {fileID: 1503103540}
+  isBraking: 1
+  brakePower: 50
+  isStrering: 0
+  steeringAngle: 20
+  streeingSmoothSpeed: 2
 --- !u!1 &1447344687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1698,11 @@ MonoBehaviour:
   height: 2
   smoothSpeed: 0.25
   minHeightFromGround: 4
+--- !u!4 &1503103540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6538931692997403928, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+  m_PrefabInstance: {fileID: 8415816688435803975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1670617400
 GameObject:
   m_ObjectHideFlags: 0
