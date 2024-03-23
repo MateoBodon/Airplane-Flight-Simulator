@@ -239,6 +239,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1321052422330839087, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
   m_PrefabInstance: {fileID: 8415816688435803975}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &382503004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2038958026484079594, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+  m_PrefabInstance: {fileID: 8415816688435803975}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 382502997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 492dff4422202b240ad21f5df685e206, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &382503005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,6 +682,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plane
       objectReference: {fileID: 0}
+    - target: {fileID: 4126753719292327810, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+      propertyPath: characteristics
+      value: 
+      objectReference: {fileID: 382503004}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

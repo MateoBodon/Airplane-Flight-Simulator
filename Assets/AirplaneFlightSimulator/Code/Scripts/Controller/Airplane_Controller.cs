@@ -7,6 +7,7 @@ public class Airplane_Controller : BaseRigidbody_Controller
 {
     #region Variables
     [Header("Base Airplane Properties")]
+    public Airplane_Preset airplanePreset;
     public BaseAirplane_Input input;
     public Airplane_Characteristics characteristics;
     public Transform centerOfGravity;
@@ -31,6 +32,8 @@ public class Airplane_Controller : BaseRigidbody_Controller
     #region Builtin Methods
     public override void Start()
     {
+        GetPresetInfo();
+
         base.Start();
 
         float finalMass = airplaneWeight * poundsToKilos;
@@ -124,6 +127,28 @@ public class Airplane_Controller : BaseRigidbody_Controller
     void HandleAltitude()
     {
 
+    }
+
+    void GetPresetInfo()
+    {
+        if(airplanePreset)
+        {
+            airplaneWeight = airplanePreset.airplaneWeight;
+            centerOfGravity.localPosition = airplanePreset.cogPosition;
+
+            if(characteristics)
+            {
+                characteristics.maxMPH = airplanePreset.maxMPH;
+                characteristics.rbLerpSpeed = airplanePreset.rbLerpSpeed;
+                characteristics.maxLiftPower = airplanePreset.maxLiftPower;
+                characteristics.liftCurve = airplanePreset.liftCurve;
+                characteristics.dragFactor = airplanePreset.dragFactor;
+                characteristics.flapDragFactor = airplanePreset.flapDragFactor;
+                characteristics.pitchSpeed = airplanePreset.pitchSpeed;
+                characteristics.rollSpeed = airplanePreset.rollSpeed;
+                characteristics.yawSpeed = airplanePreset.yawSpeed;
+            }
+        }
     }
     #endregion
 }
