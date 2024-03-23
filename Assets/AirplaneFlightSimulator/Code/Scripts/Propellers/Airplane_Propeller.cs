@@ -6,6 +6,7 @@ public class Airplane_Propeller : MonoBehaviour
 {
     #region Variables
     [Header("Propeller Properties")]
+    public float minRotationRPM = 30f;
     public float minQuadRPMs = 300f;
     public float minTextureSwampRPMs = 600f;
     public GameObject mainProp;
@@ -31,7 +32,8 @@ public class Airplane_Propeller : MonoBehaviour
     public void HandlePropeller(float currentRPM)
     {
         //Get degrees per second
-        float dps = currentRPM * 6f * Time.deltaTime;
+        float dps = (((currentRPM * 360f) / 60) + minRotationRPM) * Time.deltaTime;
+        dps = Mathf.Clamp(dps, 0f, minRotationRPM);
 
         //Rotate the Propeller Group
         transform.Rotate(Vector3.forward, dps);
