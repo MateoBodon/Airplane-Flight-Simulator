@@ -6,6 +6,8 @@ public class XboxAirplane_Input : BaseAirplane_Input
 {
     protected override void HandleInput()
     {
+        base.HandleInput();
+
         //Process Main Control Input
             pitch = Input.GetAxis("Vertical");
             roll = Input.GetAxis("Horizontal");
@@ -26,5 +28,8 @@ public class XboxAirplane_Input : BaseAirplane_Input
             }
 
             flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
+
+            //Camera Switch Button
+            cameraSwitch = Input.GetButtonDown("X_Y_Button") || Input.GetKeyDown(cameraKey);
     }
 }

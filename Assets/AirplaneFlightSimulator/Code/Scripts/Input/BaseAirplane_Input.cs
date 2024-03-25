@@ -13,8 +13,16 @@ public class BaseAirplane_Input : MonoBehaviour
     protected float roll = 0f;
     protected float yaw = 0f;
     protected float throttle = 0f;
-    public KeyCode brakeKey = KeyCode.Space;
+
+    [SerializeField]
+    private KeyCode brakeKey = KeyCode.Space;
     protected float brake = 0f;
+
+    [SerializeField]
+    protected KeyCode cameraKey = KeyCode.C;
+    protected bool cameraSwitch = false;
+
+    [SerializeField]
     public int maxFlapIncrements = 3;
     protected int flaps = 0;
 
@@ -48,6 +56,11 @@ public class BaseAirplane_Input : MonoBehaviour
     public float Brake
     {
         get{return brake;}
+    }
+
+    public bool CameraSwitch
+    {
+        get{return cameraSwitch;}
     }
     #endregion
 
@@ -83,6 +96,9 @@ public class BaseAirplane_Input : MonoBehaviour
             }
 
             flaps = Mathf.Clamp(flaps, 0, maxFlapIncrements);
+
+            //Camera Switch Key
+            cameraSwitch = Input.GetKeyDown(cameraKey);
         }
 
         void StickyThrottleControl()
