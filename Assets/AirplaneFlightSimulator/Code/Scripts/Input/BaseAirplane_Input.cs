@@ -69,6 +69,8 @@ public class BaseAirplane_Input : MonoBehaviour
     void Update()
     {
         HandleInput();
+        StickyThrottleControl();
+        ClamInputs();
     }
     #endregion
 
@@ -80,7 +82,6 @@ public class BaseAirplane_Input : MonoBehaviour
             roll = Input.GetAxis("Horizontal");
             yaw = Input.GetAxis("Yaw");
             throttle = Input.GetAxis("Throttle");
-            StickyThrottleControl();
 
             //Process Brake Inputs
             brake = Input.GetKey(brakeKey)? 1f : 0f;
@@ -105,6 +106,14 @@ public class BaseAirplane_Input : MonoBehaviour
         {
             stickyThrottle = stickyThrottle + (throttle * throttleSpeed * Time.deltaTime);
             stickyThrottle = Mathf.Clamp01(stickyThrottle);
+        }
+
+        protected void ClamInputs()
+        {
+            pitch = Mathf.Clamp(pitch, -1f, 1f);
+            roll = Mathf.Clamp(roll, -1f, 1f);
+            yaw = Mathf.Clamp(yaw, -1f, 1f);
+            throttle = Mathf.Clamp(throttle, -1f, 1f);
         }
     #endregion
 }

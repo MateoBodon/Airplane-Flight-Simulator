@@ -25,8 +25,23 @@ public class Airplane_Controller : BaseRigidbody_Controller
     public List<Airplane_ControlSurface> controlSurfaces = new List<Airplane_ControlSurface>();
     #endregion
 
+    #region Properties
+    private float currentMSL;
+    public float CurrentMSL
+    {
+        get{return currentMSL;}
+    }
+
+    private float currentAGL;
+    public float CurrentAGL
+    {
+        get{return currentAGL;}
+    }
+    #endregion
+
     #region Constants
     const float poundsToKilos = 0.453592f;
+    const float metersToFeet = 3.28084f;
     #endregion
 
     #region Builtin Methods
@@ -126,7 +141,16 @@ public class Airplane_Controller : BaseRigidbody_Controller
     
     void HandleAltitude()
     {
-
+        currentMSL = transform.position.y * metersToFeet;
+        
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+            if (hit.transform.tag == "Ground")
+            {
+                currentAGL = hit.distance * metersToFeet;
+            }
+        }
     }
 
     void GetPresetInfo()

@@ -15,6 +15,15 @@ public class Airplane_Engine : MonoBehaviour
     public List<Airplane_Propeller> propellers = new List<Airplane_Propeller>();    
     #endregion
 
+    #region Properties
+    private float currentRPM;
+    public float CurrentRPM
+    {
+        get { return currentRPM; }
+    }
+    #endregion
+
+
     #region Buildin Methods
     #endregion
 
@@ -26,7 +35,7 @@ public class Airplane_Engine : MonoBehaviour
         finalThrottle = powerCurve.Evaluate(finalThrottle);
 
         //Calculate RPM's
-        float currentRPM = maxRPM * finalThrottle;
+        currentRPM = maxRPM * finalThrottle;
 
         //Handle Propellers
         if (propellers != null)

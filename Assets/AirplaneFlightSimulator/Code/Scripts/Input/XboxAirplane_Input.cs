@@ -9,10 +9,10 @@ public class XboxAirplane_Input : BaseAirplane_Input
         base.HandleInput();
 
         //Process Main Control Input
-            pitch = Input.GetAxis("Vertical");
-            roll = Input.GetAxis("Horizontal");
-            yaw = Input.GetAxis("X_RH_Stick");
-            throttle = Input.GetAxis("X_RV_Stick");
+            pitch += Input.GetAxis("Vertical");
+            roll += Input.GetAxis("Horizontal");
+            yaw += Input.GetAxis("X_RH_Stick");
+            throttle += Input.GetAxis("X_RV_Stick");
 
             //Process Brake Inputs
             brake = Input.GetAxis("Fire1");
