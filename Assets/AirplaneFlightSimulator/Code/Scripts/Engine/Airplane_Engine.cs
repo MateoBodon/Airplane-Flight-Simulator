@@ -8,11 +8,16 @@ public class Airplane_Engine : MonoBehaviour
     [Header("Engine Properties")]
     public float maxForce = 200f;
     public float maxRPM = 2550f;
+    public float shutoffSpeed = 2f;
 
     public AnimationCurve powerCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
     [Header("Propeller")]
-    public List<Airplane_Propeller> propellers = new List<Airplane_Propeller>();    
+    public List<Airplane_Propeller> propellers = new List<Airplane_Propeller>();
+
+    private bool isShuttoff = false;
+    private float lastThrottleValue;
+    private float finalShutoffThrottleValue;    
     #endregion
 
     #region Properties
@@ -23,8 +28,11 @@ public class Airplane_Engine : MonoBehaviour
     }
     #endregion
 
-
-    #region Buildin Methods
+    #region Properties
+    public bool ShutEngineOff
+    {
+        set { isShuttoff = value; }
+    }
     #endregion
 
     #region Custom Methods
@@ -32,7 +40,21 @@ public class Airplane_Engine : MonoBehaviour
     {
         //Calculate Power
         float finalThrottle = Mathf.Clamp01(throttle);
-        finalThrottle = powerCurve.Evaluate(finalThrottle);
+        
+        if (!isShuttoff)
+        {
+            finalThrottle = powerCurve.Evaluate(finalThrottle);
+            lastThrottleValue = finalThrottle;
+        }
+        else
+        {
+            lastThrottleValue -= Time.deltaTime * shutoffSpeed;
+            lastThrottleValue = Mathf.Clamp01(lastThrottleValue);
+            finalShutoffThrottleValue = powerCurve.Evaluate(lastThrottleValue);
+            finalThrottle = finalShutoffThrottleValue;
+        }
+
+        
 
         //Calculate RPM's
         currentRPM = maxRPM * finalThrottle;

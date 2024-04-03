@@ -389,17 +389,50 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &291439881 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5879153206815423494, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+  m_PrefabInstance: {fileID: 8415816688435803975}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &291439882 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2524244335174387315, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
   m_PrefabInstance: {fileID: 8415816688435803975}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 291439881}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 389a2dd36543dc24bbb98619528cccc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &291439884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291439881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f6af398ba93154d9b5c63867624763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutoffKey: 111
+  onEngineCuttoff:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 291439882}
+        m_TargetAssemblyTypeName: Airplane_Engine, Assembly-CSharp
+        m_MethodName: set_ShutEngineOff
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &382502997 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2670814530406778842, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
@@ -1491,6 +1524,7 @@ MonoBehaviour:
   engine: {fileID: 291439882}
   maxRPM: 3500
   maxRotation: 312
+  pointerSpeed: 2
 --- !u!114 &1309971415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2246,6 +2280,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2670814530406778842, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
       insertIndex: 4
       addedObject: {fileID: 382503005}
+    - targetCorrespondingSourceObject: {fileID: 5879153206815423494, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 291439884}
   m_SourcePrefab: {fileID: 100100000, guid: a1bea36748b807f44a64a15848e5d927, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
