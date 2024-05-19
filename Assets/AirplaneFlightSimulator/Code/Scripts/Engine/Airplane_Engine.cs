@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Airplane_Fuel))]
 public class Airplane_Engine : MonoBehaviour
 {
     #region Variables
@@ -17,7 +18,8 @@ public class Airplane_Engine : MonoBehaviour
 
     private bool isShuttoff = false;
     private float lastThrottleValue;
-    private float finalShutoffThrottleValue;    
+    private float finalShutoffThrottleValue;
+    private Airplane_Fuel fuel;
     #endregion
 
     #region Properties
@@ -26,14 +28,26 @@ public class Airplane_Engine : MonoBehaviour
     {
         get { return currentRPM; }
     }
-    #endregion
-
-    #region Properties
     public bool ShutEngineOff
     {
         set { isShuttoff = value; }
     }
     #endregion
+
+    #region Builtin Methods
+    void Start()
+    {
+        if(!fuel)
+        {
+            fuel = GetComponent<Airplane_Fuel>();
+            if(fuel)
+            {
+                fuel.InitFuel();
+            }
+        }
+    }
+    #endregion
+
 
     #region Custom Methods
     public Vector3 CalculateForce(float throttle)
@@ -53,7 +67,6 @@ public class Airplane_Engine : MonoBehaviour
             finalShutoffThrottleValue = powerCurve.Evaluate(lastThrottleValue);
             finalThrottle = finalShutoffThrottleValue;
         }
-
         
 
         //Calculate RPM's
@@ -71,11 +84,26 @@ public class Airplane_Engine : MonoBehaviour
             }
         }
 
+        //Handle Fuel
+        HandleFuel(finalThrottle);
+
         //Create Force
         float finalPower = maxForce * finalThrottle;
         Vector3 finalForce = transform.forward * finalPower;
 
         return finalForce;
+    }
+
+    void HandleFuel(float throttleValue)
+    {
+        if (fuel)
+        {
+            fuel.UpdateFuel(throttleValue);
+            if (fuel.CurrentFuel <= 0)
+            {
+                isShuttoff = true;
+            }
+        }
     }
     #endregion
 }
